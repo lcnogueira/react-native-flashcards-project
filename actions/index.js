@@ -1,11 +1,11 @@
-import { ADD_DECK } from '../utils/actionTypes';
+import { ADD_DECK, RECEIVE_DECKS } from '../utils/actionTypes';
 
 export const addDeck = deck => ({
   type: ADD_DECK,
   deck
 });
 
-// export const receiveDecks = decks => ({
-//   type: RECEIVE_DECKS,
-//   decks
-// });
+export const receiveDecks = decks => ({
+  type: RECEIVE_DECKS,
+  decks
+});

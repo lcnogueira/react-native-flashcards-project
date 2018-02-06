@@ -7,11 +7,11 @@ const decks = (state = {}, action) => {
         ...state,
         ...action.deck
       };
-    // case RECEIVE_DECKS:
-    //   return {
-    //     ...state,
-    //     ...action.decks
-    //   }
+    case RECEIVE_DECKS:
+      return {
+        ...state,
+        ...action.decks
+      }
     default:
       return state;
   }
