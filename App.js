@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import reducer from './reducers';
 import DecksList from './components/DecksList';
 import { TabNavigator } from 'react-navigation';
-import { purple, white } from './utils/colors';
+import { blue, white } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 
 
@@ -33,10 +33,10 @@ const Tabs = TabNavigator({
       showIcon: true,
       upperCaseLabel: false,
       // showLabel: false,
-      activeTintColor: Platform.OS === 'ios' ? purple : white,
+      activeTintColor: Platform.OS === 'ios' ? blue : white,
       style: {
         height: 57,
-        backgroundColor: Platform.OS === 'ios' ? white : purple,
+        backgroundColor: Platform.OS === 'ios' ? white : blue,
         shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowOffset: {
           width: 0,

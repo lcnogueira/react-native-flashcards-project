@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { purple, white } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 
 export default Deck = ({ deck }) => (
   <View style={styles.deck}>
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: purple,
+    backgroundColor: blue,
     height: 150
   },
   text: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
-import { purple, white } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 
 export default SubmitBtn = ({ onPress }) => (
   <TouchableOpacity 
@@ -13,7 +13,7 @@ export default SubmitBtn = ({ onPress }) => (
 
 const styles = StyleSheet.create({
   iosSubmitBtn: {
-    backgroundColor: purple,
+    backgroundColor: blue,
     padding: 10,
     borderRadius: 7,
     height: 45,
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   androidSubmitBtn: {
-    backgroundColor: purple,
+    backgroundColor: blue,
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,
     height: 45,
-    borderRadius: 2,
+    borderRadius: 4,
   },
   submitBtnText:{
     color: white,
