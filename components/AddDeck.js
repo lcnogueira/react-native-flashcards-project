@@ -3,6 +3,8 @@ import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
 import SubmitBtn from './SubmitBtn';
 import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
+import { connect } from 'react-redux';
+import { addDeck } from '../actions';
 
 class AddDeck extends Component {
   state = { 
@@ -14,18 +16,25 @@ class AddDeck extends Component {
   };
 
   submit = () => {
-    saveDeckTitle(this.state.deckTitle);
+    const { deckTitle } = this.state;
 
-    //TODO: dispatch action to updade store
+    saveDeckTitle(deckTitle);
 
-    //TODO: navigate to DeckView component
+    this.props.dispatch(addDeck({
+      [deckTitle]: {
+        title: deckTitle,
+        questions: []
+      }
+    }));
 
     //Clear inputText
     this.setState({
       deckTitle: ''
     });
 
-    //Clear local notification
+    //TODO: clear local notification
+
+    //TODO: navigate to DeckView component
   }
 
   render(){
@@ -54,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddDeck;
+export default connect()(AddDeck);
