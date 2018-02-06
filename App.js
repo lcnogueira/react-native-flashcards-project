@@ -6,8 +6,9 @@ import { Provider } from 'react-redux';
 import reducer from './reducers';
 import DecksList from './components/DecksList';
 import { TabNavigator } from 'react-navigation';
-import { blue, white } from './utils/colors';
+import { blue, white, purple } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
+import MyStatusBar from './components/MyStatusBar';
 
 
 const Tabs = TabNavigator({
@@ -56,6 +57,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex:1}}>
+          <MyStatusBar backgroundColor={purple} barStyle='light-content'/>
           <Tabs />
         </View>
       </Provider>
