@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderWidth: 1,
     borderColor: '#757575',
-    margin: 50,
+    margin: 40,
     borderRadius: 8
   },
 });

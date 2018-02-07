@@ -49,7 +49,7 @@ class AddDeck extends Component {
           placeholder='Deck Title'
         >
         </MyInputText>
-        <SubmitBtn onPress={this.submit} />
+        <SubmitBtn onPress={this.submit} label={'Create Deck'} />
       </KeyboardAvoidingView>
     );
   };
@@ -58,8 +58,9 @@ class AddDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 50
   },
 });
 

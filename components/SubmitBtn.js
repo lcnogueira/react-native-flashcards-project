@@ -2,13 +2,13 @@ import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
 import { blue, white } from '../utils/colors';
 
-export default SubmitBtn = ({ onPress }) => (
-  <TouchableOpacity 
-    style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-    onPress={onPress} 
-  >
-    <Text style={styles.submitBtnText}>SUBMIT</Text>
-  </TouchableOpacity>
+export default SubmitBtn = ({ onPress, label }) => (
+    <TouchableOpacity 
+      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+      onPress={onPress} 
+    >
+      <Text style={styles.submitBtnText}>{label}</Text>
+    </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   submitBtnText:{
     color: white,
-    fontSize: 22,
+    fontSize: 18,
     textAlign: 'center'
   },
 })
