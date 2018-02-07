@@ -2,33 +2,33 @@ import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
 import { blue, white } from '../utils/colors';
 
-export default SubmitBtn = ({ onPress, label }) => (
+export default MyButton = ({ onPress, label, backgroundColor }) => (
     <TouchableOpacity 
-      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+      style={Platform.OS === 'ios' 
+        ? [styles.iosBtn,{backgroundColor: backgroundColor}] 
+        : [styles.androidBtn,{backgroundColor: backgroundColor}]}
       onPress={onPress} 
     >
-      <Text style={styles.submitBtnText}>{label}</Text>
+      <Text style={styles.submitText}>{label}</Text>
     </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
-  iosSubmitBtn: {
-    backgroundColor: blue,
+  iosBtn: {
     padding: 10,
     borderRadius: 7,
     height: 45,
     marginLeft: 40,
     marginRight: 40,
   },
-  androidSubmitBtn: {
-    backgroundColor: blue,
+  androidBtn: {
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,
     height: 45,
     borderRadius: 4,
   },
-  submitBtnText:{
+  submitText:{
     color: white,
     fontSize: 18,
     textAlign: 'center'

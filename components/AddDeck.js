@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
-import SubmitBtn from './SubmitBtn';
+import MyButton from './MyButton';
 import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
+import { blue } from '../utils/colors'
 
 class AddDeck extends Component {
   state = { 
@@ -49,7 +50,7 @@ class AddDeck extends Component {
           placeholder='Deck Title'
         >
         </MyInputText>
-        <SubmitBtn onPress={this.submit} label={'Create Deck'} />
+        <MyButton onPress={this.submit} label={'Create Deck'} backgroundColor={blue} />
       </KeyboardAvoidingView>
     );
   };
