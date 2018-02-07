@@ -1,12 +1,16 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { blue, white } from '../utils/colors';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { blue, white, gray } from '../utils/colors';
 
-export default Deck = ({ deck }) => (
-  <View style={styles.deck}>
-    <Text style={styles.text}>{deck.title}</Text>
-    <Text style={styles.text}>{deck.questions.length} cards</Text>
-  </View>
+export default Deck = ({ deck, navigate }) => (
+  <TouchableOpacity 
+    onPress={() => navigate('DeckView',{ deckTitle: deck.title})}
+  >
+    <View style={styles.deck}>
+      <Text style={styles.title}>{deck.title}</Text>
+      <Text style={styles.cards}>{deck.questions.length} cards</Text>
+    </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
@@ -19,7 +23,12 @@ const styles = StyleSheet.create({
     backgroundColor: blue,
     height: 150
   },
-  text: {
+  title: {
     color: white,
+    fontSize: 22,
+    marginBottom: 5
   },
+  cards: {
+    color: white,
+  }
 })

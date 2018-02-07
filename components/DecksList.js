@@ -46,7 +46,7 @@ class DecksList extends Component {
         {decks && Object.keys(decks).map((title, i) => {
           const deck = decks[title];
           return (
-            <Deck deck={deck} key={i} />
+            <Deck deck={deck} key={i} navigate={this.props.navigation.navigate}/>
           )})
         }
       </ScrollView>

@@ -5,10 +5,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import DecksList from './components/DecksList';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import { blue, white, purple } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import MyStatusBar from './components/MyStatusBar';
+import DeckView from './components/DeckView';
 
 
 const Tabs = TabNavigator({
@@ -48,8 +49,26 @@ const Tabs = TabNavigator({
       },
       tabStyle: {
         flexDirection:'row'
+      },
+    },
+});
+
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  DeckView: {
+    screen: DeckView,
+    navigationOptions: {
+      style: {
+        height: 57,
+      },
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
       }
-    }
+    },
+  },
 });
 
 export default class App extends React.Component {
@@ -58,7 +77,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex:1}}>
           <MyStatusBar backgroundColor={purple} barStyle='light-content'/>
-          <Tabs />
+          <MainNavigator />
         </View>
       </Provider>
     );

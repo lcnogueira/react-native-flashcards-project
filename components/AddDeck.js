@@ -28,14 +28,16 @@ class AddDeck extends Component {
       }
     }));
 
+    //TODO: clear local notification
+
+    //Navigate to DeckView component
+    this.props.navigation.navigate('DeckView',{ deckTitle });
+
     //Clear inputText
     this.setState({
       deckTitle: ''
     });
 
-    //TODO: clear local notification
-
-    //TODO: navigate to DeckView component
   }
 
   render(){

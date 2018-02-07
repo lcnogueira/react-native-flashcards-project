@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 30,
     height: 45,
+    width: 170,
+    marginBottom: 10,
     borderRadius: 4,
   },
   submitText:{
