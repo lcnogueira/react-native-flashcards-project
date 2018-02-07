@@ -5,43 +5,50 @@ import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
-import { blue } from '../utils/colors'
+import { blue } from '../utils/colors';
 
 class AddDeck extends Component {
   state = { 
-    deckTitle: '' 
+    deckTitle: '',
+    deckTitleError: false,
   };
 
   handleDeckTitle = (deckTitle) => {
-    this.setState(() => ({ deckTitle }));
+    this.setState(() => ({ 
+      deckTitle, 
+      deckTitleError: (deckTitle === '' ? true : false) 
+    }));
   };
 
   submit = () => {
-    const { deckTitle } = this.state;
+    const { deckTitle, deckTitleError } = this.state;
 
-    saveDeckTitle(deckTitle);
+    if(deckTitle === ''){
+      this.setState({deckTitleError: true});
+    }else {
+      saveDeckTitle(deckTitle);
 
-    this.props.dispatch(addDeck({
-      [deckTitle]: {
-        title: deckTitle,
-        questions: []
-      }
-    }));
+      this.props.dispatch(addDeck({
+        [deckTitle]: {
+          title: deckTitle,
+          questions: []
+        }
+      }));
 
-    //TODO: clear local notification
+      //TODO: clear local notification
 
-    //Navigate to DeckView component
-    this.props.navigation.navigate('DeckView',{ deckTitle });
+      //Navigate to DeckView component
+      this.props.navigation.navigate('DeckView',{ deckTitle });
 
-    //Clear inputText
-    this.setState({
-      deckTitle: ''
-    });
-
+      //Clear inputText
+      this.setState({
+        deckTitle: ''
+      });
+    }
   }
 
   render(){
-    const { deckTitle } = this.state;
+    const { deckTitle, deckTitleError } = this.state;
 
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -50,6 +57,7 @@ class AddDeck extends Component {
           value={deckTitle}
           onChangeText={this.handleDeckTitle}
           placeholder='Deck Title'
+          showRequiredError={deckTitleError}
         >
         </MyInputText>
         <MyButton onPress={this.submit} label={'Create Deck'} backgroundColor={blue} />
