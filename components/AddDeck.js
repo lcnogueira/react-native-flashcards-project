@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, KeyboardAvoidingView, Keyboard } from 'react-native';
 import MyButton from './MyButton';
 import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
@@ -35,7 +35,8 @@ class AddDeck extends Component {
         }
       }));
 
-      //TODO: clear local notification
+      //Hide the keyboard before mounting the AddCard component
+      Keyboard.dismiss();
 
       //Navigate to DeckView component
       this.props.navigation.navigate('DeckView',{ deckTitle });
