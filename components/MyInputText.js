@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   input: {
-    width: 200,
+    width: 280,
     height: 44,
     padding: 8,
     borderWidth: 1,

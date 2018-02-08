@@ -10,6 +10,7 @@ import { blue, white, purple } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import MyStatusBar from './components/MyStatusBar';
 import DeckView from './components/DeckView';
+import AddCard from './components/AddCard';
 
 
 const Tabs = TabNavigator({
@@ -60,9 +61,16 @@ const MainNavigator = StackNavigator({
   DeckView: {
     screen: DeckView,
     navigationOptions: {
-      style: {
-        height: 57,
-      },
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
+      }
+    },
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: blue,

@@ -5,20 +5,20 @@ import MyButton from './MyButton';
 import { blue, black, gray } from '../utils/colors';
 
 class DeckView extends Component {
+
   static navigationOptions = ({ navigation }) => ({title: navigation.state.params.deckTitle});
 
-  //TODO: Code these functions
-  addCard = () => {};
-  startQuiz = () => {};
-
   render(){
-    const { deck } = this.props;
+    const { deck, navigate } = this.props;
 
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.cards}>{deck.questions.length} cards</Text>
-        <MyButton onPress={this.addCard} label={'Add Card'} backgroundColor={blue} />
+        <MyButton 
+          onPress={() => navigate('AddCard', { deckTitle: deck.title })}
+          label={'Add Card'} 
+          backgroundColor={blue} />
         <MyButton onPress={this.startQuiz} label={'Start Quiz'} backgroundColor={black} />
       </View>
     )
@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (decks, { navigation }) => ({deck: decks[navigation.state.params.deckTitle] });
+const mapStateToProps = (decks, { navigation }) => ({
+  deck: decks[navigation.state.params.deckTitle],
+  navigate: navigation.navigate,
+});
 
 export default connect(mapStateToProps)(DeckView);

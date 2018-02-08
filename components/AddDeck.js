@@ -26,8 +26,11 @@ class AddDeck extends Component {
     if(deckTitle === ''){
       this.setState({deckTitleError: true});
     }else {
+
+      //Save the deck in AsyncStorage
       saveDeckTitle(deckTitle);
 
+      //Dispacth action to update the store
       this.props.dispatch(addDeck({
         [deckTitle]: {
           title: deckTitle,
