@@ -4,6 +4,7 @@ import { getDecks } from '../utils/api';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../actions';
 import Deck from './Deck';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 class DecksList extends Component {
 
@@ -16,9 +17,13 @@ class DecksList extends Component {
     .then(decks => {
       if (decks!==null) this.props.dispatch(receiveDecks(decks));
     })
-    .then(() => this.setState(() => ({
-      ready: true
-    })));
+    .then(() => 
+      setTimeout(() => 
+          this.setState(() => ({
+            ready: true
+          })),2000
+      )
+    );
   };
 
   render(){
@@ -26,19 +31,19 @@ class DecksList extends Component {
 
      if(!this.state.ready){
       return (
-        <View style={styles.loading}>
+        <View style={styles.center}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
-      )      
+      );      
      }
 
-    //TODO: Refactor this code
     if (Object.keys(decks).length === 0) {
       return(
-        <View style={styles.container}>
-          <Text>There are no cards at the moment. Add a new one :)</Text>
+        <View style={[styles.center, {padding: 20 }]}>
+          <MaterialCommunityIcons name='emoticon-sad' size={100} style={{marginBottom: 40}}/>
+          <Text style={{textAlign:'center', fontSize: 22}}>There are no decks at the moment. Add a new one!</Text>
         </View>
-      )
+      );
     }
 
     return (
@@ -61,11 +66,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10
   },
-  loading: {
+  center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
 });
 
 const mapStateToProps = (decks) => ({decks});
