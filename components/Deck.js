@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { blue, white, gray } from '../utils/colors';
+import { getCardsDesc } from '../utils/helpers';
 
 export default Deck = ({ deck, navigate }) => (
   <TouchableOpacity 
@@ -8,7 +9,7 @@ export default Deck = ({ deck, navigate }) => (
   >
     <View style={styles.deck}>
       <Text style={styles.title}>{deck.title}</Text>
-      <Text style={styles.cards}>{deck.questions.length} cards</Text>
+      <Text style={styles.cards}>{getCardsDesc(deck)}</Text>
     </View>
   </TouchableOpacity>
 );

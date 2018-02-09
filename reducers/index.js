@@ -19,7 +19,7 @@ const decks = (state = {}, action) => {
           title: action.deckTitle,
           questions: [
             ...state[action.deckTitle].questions,
-            card
+            action.card
           ]
         }
       };

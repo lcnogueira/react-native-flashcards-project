@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import MyButton from './MyButton';
 import { blue, black, gray } from '../utils/colors';
+import { getCardsDesc } from '../utils/helpers';
 
 class DeckView extends Component {
 
@@ -14,7 +15,7 @@ class DeckView extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.cards}>{deck.questions.length} cards</Text>
+        <Text style={styles.cards}>{getCardsDesc(deck)}</Text>
         <MyButton 
           onPress={() => navigate('AddCard', { deckTitle: deck.title })}
           label={'Add Card'} 
