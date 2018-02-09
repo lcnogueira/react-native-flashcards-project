@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { addDeck } from '../actions';
 import { blue } from '../utils/colors';
 
-class AddDeck extends Component {
+class AddDeckView extends Component {
   state = { 
     deckTitle: '',
     deckTitleError: false,
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(AddDeck);
+export default connect()(AddDeckView);

@@ -7,6 +7,3 @@ export default MyStatusBar = ({ backgroundColor, ...props}) => (
     <StatusBar translucent backgroundColor={backgroundColor} {...props} />
   </View>
 );
-
-
-

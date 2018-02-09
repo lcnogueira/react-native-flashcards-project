@@ -17,7 +17,7 @@ class DeckView extends Component {
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.cards}>{getCardsDesc(deck)}</Text>
         <MyButton 
-          onPress={() => navigate('AddCard', { deckTitle: deck.title })}
+          onPress={() => navigate('AddCardView', { deckTitle: deck.title })}
           label={'Add Card'} 
           backgroundColor={blue} />
         <MyButton onPress={this.startQuiz} label={'Start Quiz'} backgroundColor={black} />

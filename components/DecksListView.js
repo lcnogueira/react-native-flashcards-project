@@ -6,7 +6,7 @@ import { receiveDecks } from '../actions';
 import Deck from './Deck';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-class DecksList extends Component {
+class DecksListView extends Component {
 
   state = {
     ready: false
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (decks) => ({decks});
 
-export default connect(mapStateToProps)(DecksList);
+export default connect(mapStateToProps)(DecksListView);

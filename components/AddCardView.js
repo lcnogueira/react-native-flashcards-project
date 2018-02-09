@@ -7,7 +7,7 @@ import { black } from '../utils/colors';
 import { addCardToDeck } from '../utils/api';
 import { addCard } from '../actions';
 
-class AddCard extends Component {
+class AddCardView extends Component {
   state = {
     question: '',
     questionError: false,
@@ -98,4 +98,4 @@ const mapStateToProps = (decks, { navigation }) => ({
   goBack: () => navigation.goBack(),
 })
 
-export default connect(mapStateToProps)(AddCard);
+export default connect(mapStateToProps)(AddCardView);

@@ -1,28 +1,28 @@
 import React from 'react';
 import { View, Platform } from 'react-native';
-import AddDeck from './components/AddDeck';
+import AddDeckView from './components/AddDeckView';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import DecksList from './components/DecksList';
+import DecksListView from './components/DecksListView';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { blue, white, purple } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import MyStatusBar from './components/MyStatusBar';
 import DeckView from './components/DeckView';
-import AddCard from './components/AddCard';
+import AddCardView from './components/AddCardView';
 
 
 const Tabs = TabNavigator({
-  DecksList: {
-    screen: DecksList,
+  DecksListView: {
+    screen: DecksListView,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <MaterialIcons name='list' size={26} color={tintColor} />
     }
   },
-  AddDeck: {
-    screen: AddDeck,
+  AddDeckView: {
+    screen: AddDeckView,
     navigationOptions: {
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <MaterialIcons name='add-circle-outline' size={26} color={tintColor} />
@@ -67,8 +67,8 @@ const MainNavigator = StackNavigator({
       }
     },
   },
-  AddCard: {
-    screen: AddCard,
+  AddCardView: {
+    screen: AddCardView,
     navigationOptions: {
       title: 'Add Card',
       headerTintColor: white,
