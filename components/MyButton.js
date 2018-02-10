@@ -2,14 +2,16 @@ import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
 import { blue, white } from '../utils/colors';
 
-export default MyButton = ({ onPress, label, backgroundColor }) => (
+export default MyButton = ({ children, onPress, addStyle }) => (
     <TouchableOpacity 
       style={Platform.OS === 'ios' 
-        ? [styles.iosBtn,{backgroundColor: backgroundColor}] 
-        : [styles.androidBtn,{backgroundColor: backgroundColor}]}
+        ? [styles.iosBtn, addStyle] 
+        : [styles.androidBtn, addStyle]}
       onPress={onPress} 
     >
-      <Text style={styles.submitText}>{label}</Text>
+      <Text style={styles.submitText}>
+        {children}
+      </Text>
     </TouchableOpacity>
 );
 
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     height: 45,
     width: 170,
-    marginBottom: 10,
     borderRadius: 4,
   },
   submitText:{

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, KeyboardAvoidingView, Keyboard } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native';
 import MyButton from './MyButton';
 import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
-import { blue } from '../utils/colors';
+import { black } from '../utils/colors';
+import MyText from './MyText';
 
 class AddDeckView extends Component {
   state = { 
@@ -56,15 +57,21 @@ class AddDeckView extends Component {
 
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <Text>What is the title of your new deck?</Text>
+        <MyText>What is the title of your new Deck?</MyText>
         <MyInputText
-          value={deckTitle}
           onChangeText={this.handleDeckTitle}
           placeholder='Deck Title'
           showRequiredError={deckTitleError}
+          addStyle={{margin: 40}}
         >
+          {deckTitle}
         </MyInputText>
-        <MyButton onPress={this.submit} label={'Create Deck'} backgroundColor={blue} />
+        <MyButton
+          onPress={this.submit}
+          addStyle={{backgroundColor:black}} 
+        >
+          Create Deck
+        </MyButton>
       </KeyboardAvoidingView>
     );
   };

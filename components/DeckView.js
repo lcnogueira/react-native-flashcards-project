@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import MyButton from './MyButton';
 import { blue, black, gray } from '../utils/colors';
 import { getCardsDesc } from '../utils/helpers';
+import MyText from './MyText';
 
 class DeckView extends Component {
 
@@ -14,13 +15,20 @@ class DeckView extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.cards}>{getCardsDesc(deck)}</Text>
+        <MyText>{deck.title}</MyText>
+        <Text style={{fontSize: 18, color: gray }}>{getCardsDesc(deck)}</Text>
         <MyButton 
-          onPress={() => navigate('AddCardView', { deckTitle: deck.title })}
-          label={'Add Card'} 
-          backgroundColor={blue} />
-        <MyButton onPress={this.startQuiz} label={'Start Quiz'} backgroundColor={black} />
+          onPress={() => navigate('AddCardView', { deckTitle: deck.title })} 
+          addStyle={{marginBottom: 10, marginTop: 90, backgroundColor: blue}} 
+        >
+          Add Card
+        </MyButton>
+        <MyButton 
+          onPress={() => navigate('QuizView', { deckTitle: deck.title })} 
+          addStyle={{backgroundColor: black}} 
+        >
+          Start Quiz
+        </MyButton>
       </View>
     )
   };
@@ -32,14 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 22,
-    marginBottom: 5
-  },
-  cards: {
-    color: gray,
-    marginBottom: 90    
-  }
 });
 
 const mapStateToProps = (decks, { navigation }) => ({

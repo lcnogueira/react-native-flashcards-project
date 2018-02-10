@@ -2,14 +2,15 @@ import React from 'react';
 import { TextInput, StyleSheet, View, Text } from 'react-native';
 import { red } from '../utils/colors';
 
-export default MyInputText = ({value, onChangeText, placeholder, showRequiredError}) => (
-  <View style={styles.container}>
+export default MyInputText = ({children, onChangeText, placeholder, showRequiredError, addStyle}) => (
+  <View style={[styles.container, addStyle]}>
     <TextInput
       style={styles.input}
-      value={value}
       onChangeText={onChangeText}
       placeholder={placeholder}
-    ></TextInput>
+    >
+      {children}
+    </TextInput>
     {showRequiredError && (
       <Text style={styles.titleError}>This field is required.</Text>
     )}
@@ -18,12 +19,11 @@ export default MyInputText = ({value, onChangeText, placeholder, showRequiredErr
 
 const styles = StyleSheet.create({
   container: {
-    margin: 40,
     alignItems: 'center'
   },
   input: {
-    width: 280,
-    height: 44,
+    width: 320,
+    height: 50,
     padding: 8,
     borderWidth: 1,
     borderColor: '#757575',

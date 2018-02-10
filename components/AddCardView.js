@@ -64,22 +64,27 @@ class AddCardView extends Component {
     return (
       <KeyboardAvoidingView style={styles.container}>
         <MyInputText 
-          value={question}
           onChangeText={this.handleQuestion}
           placeholder={'Type the question here...'}
           showRequiredError={questionError}
-        />
+          addStyle={{margin: 40}}
+        >
+          {question}
+        </MyInputText>
         <MyInputText 
-          value={answer}
           onChangeText={this.handleAnswer}
           placeholder={'Type the answer here...'}
           showRequiredError={answerError}
-        />
+          addStyle={{marginBottom: 30}}
+        >
+          {answer}
+        </MyInputText>
         <MyButton 
           onPress={this.submit}
-          label={'Submit'}
-          backgroundColor={black}
-        />
+          addStyle={{backgroundColor:black}}
+        >
+          Submit
+        </MyButton>
       </KeyboardAvoidingView>
     )
   };
