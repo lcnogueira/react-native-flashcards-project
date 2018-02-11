@@ -11,7 +11,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import MyStatusBar from './components/MyStatusBar';
 import DeckView from './components/DeckView';
 import AddCardView from './components/AddCardView';
-
+import QuizView from './components/QuizView';
 
 const Tabs = TabNavigator({
   DecksListView: {
@@ -71,6 +71,16 @@ const MainNavigator = StackNavigator({
     screen: AddCardView,
     navigationOptions: {
       title: 'Add Card',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue,
+      }
+    },
+  },
+  QuizView: {
+    screen: QuizView,
+    navigationOptions: {
+      title: 'Quiz',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: blue,

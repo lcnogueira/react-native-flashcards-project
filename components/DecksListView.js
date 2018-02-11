@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { receiveDecks } from '../actions';
 import Deck from './Deck';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MyText from './MyText';
 
 class DecksListView extends Component {
 
@@ -40,8 +41,8 @@ class DecksListView extends Component {
     if (Object.keys(decks).length === 0) {
       return(
         <View style={[styles.center, {padding: 20 }]}>
-          <MaterialCommunityIcons name='emoticon-sad' size={100} style={{marginBottom: 40}}/>
-          <Text style={{textAlign:'center', fontSize: 22}}>There are no decks at the moment. Add a new one!</Text>
+          <MaterialCommunityIcons name='run' size={100} style={{marginBottom: 40}}/>
+          <MyText>There are no decks at the moment. Add a new one!</MyText>
         </View>
       );
     }

@@ -10,6 +10,12 @@ class DeckView extends Component {
 
   static navigationOptions = ({ navigation }) => ({title: navigation.state.params.deckTitle});
 
+  startQuiz = (deck, navigate) => {
+    deck.questions.length > 0 
+    ? navigate('QuizView', { deckTitle: deck.title }) 
+    : alert('There is no card in this deck.');
+  };
+
   render(){
     const { deck, navigate } = this.props;
 
@@ -24,7 +30,7 @@ class DeckView extends Component {
           Add Card
         </MyButton>
         <MyButton 
-          onPress={() => navigate('QuizView', { deckTitle: deck.title })} 
+          onPress={() => this.startQuiz(deck,navigate)} 
           addStyle={{backgroundColor: black}} 
         >
           Start Quiz

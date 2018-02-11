@@ -2,12 +2,13 @@ import React from 'react';
 import { TouchableOpacity, Text, Platform, StyleSheet } from 'react-native';
 import { blue, white } from '../utils/colors';
 
-export default MyButton = ({ children, onPress, addStyle }) => (
+export default MyButton = ({ children, onPress, addStyle, ...props }) => (
     <TouchableOpacity 
       style={Platform.OS === 'ios' 
         ? [styles.iosBtn, addStyle] 
         : [styles.androidBtn, addStyle]}
       onPress={onPress} 
+      {...props}
     >
       <Text style={styles.submitText}>
         {children}
