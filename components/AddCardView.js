@@ -39,7 +39,7 @@ class AddCardView extends Component {
       //Dispacth action to update the store
       this.props.dispatch(addCard(deckTitle, card));
 
-      //Hide the keyboard before back to the DeckView component
+      //Hide the keyboard before navigating to the DeckView component
       Keyboard.dismiss();
 
       //Navigate to DeckView component
@@ -62,6 +62,7 @@ class AddCardView extends Component {
     const { question, questionError, answer, answerError } = this.state;
 
     return (
+      //FIXME: To Avoid the keyboard to pop up over the buttons
       <KeyboardAvoidingView style={styles.container}>
         <MyInputText 
           onChangeText={this.handleQuestion}
@@ -79,10 +80,7 @@ class AddCardView extends Component {
         >
           {answer}
         </MyInputText>
-        <MyButton 
-          onPress={this.submit}
-          addStyle={{backgroundColor:black}}
-        >
+        <MyButton onPress={this.submit} addStyle={{backgroundColor:black}}>
           Submit
         </MyButton>
       </KeyboardAvoidingView>

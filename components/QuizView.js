@@ -6,6 +6,7 @@ import { getCardNumberDesc, showResult } from '../utils/helpers';
 import MyText from './MyText';
 import MyButton from './MyButton';
 import { NavigationActions } from 'react-navigation';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 const TextButton = ({ children, onPress, addStyle }) => (
   <TouchableOpacity onPress={onPress}>
@@ -46,7 +47,13 @@ class QuizView extends Component {
     
     //If it's true, then there's no card to show anymore
     if(cardIndex === deck.questions.length){
+      
+      //It Clears today notification and sets tomorrow notification
+      clearLocalNotification()
+        .then(setLocalNotification);
+
       //TODO: update AsyncStorage and update history state at store
+
       return (
         <View style={styles.container}>
           <View style={styles.main}>

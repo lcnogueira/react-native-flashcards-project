@@ -12,6 +12,7 @@ import MyStatusBar from './components/MyStatusBar';
 import DeckView from './components/DeckView';
 import AddCardView from './components/AddCardView';
 import QuizView from './components/QuizView';
+import { setLocalNotification } from './utils/helpers';
 
 const Tabs = TabNavigator({
   DecksListView: {
@@ -90,6 +91,10 @@ const MainNavigator = StackNavigator({
 });
 
 export default class App extends React.Component {
+  componentDidMount(){
+    setLocalNotification();
+  };
+
   render() {
     return (
       <Provider store={createStore(reducer)}>
