@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native';
 
 const FLASHCARDS_STORAGE_KEY = 'Flashcards:decks';
+const FLASHCARDS_HISTORY_KEY = 'Flashcards:history';
 
 export const saveDeckTitle = (deckTitle) => {
   return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
@@ -29,4 +30,18 @@ export const addCardToDeck = (deckTitle, card) => {
       [deckTitle]: deck
     }));
   });
+};
+
+export const saveHistoryEntry = (entry) => {
+  return AsyncStorage.getItem(FLASHCARDS_HISTORY_KEY)
+    .then(entries => {
+      const e = entries ? JSON.parse(entries) : [];
+      e.push(entry);
+      AsyncStorage.setItem(FLASHCARDS_HISTORY_KEY, JSON.stringify(e));
+    });
+};
+
+export const getHistory = () => {
+  return AsyncStorage.getItem(FLASHCARDS_HISTORY_KEY)
+    .then(entries => JSON.parse(entries));
 };

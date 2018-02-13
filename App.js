@@ -5,13 +5,14 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import DecksListView from './components/DecksListView';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { blue, white, purple } from './utils/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import MyStatusBar from './components/MyStatusBar';
 import DeckView from './components/DeckView';
 import AddCardView from './components/AddCardView';
 import QuizView from './components/QuizView';
+import HistoryView from './components/HistoryView';
 import { setLocalNotification } from './utils/helpers';
 
 const Tabs = TabNavigator({
@@ -55,7 +56,7 @@ const Tabs = TabNavigator({
     },
 });
 
-const MainNavigator = StackNavigator({
+const Stack = StackNavigator({
   Home: {
     screen: Tabs,
   },
@@ -90,6 +91,23 @@ const MainNavigator = StackNavigator({
   },
 });
 
+const Drawer = DrawerNavigator({
+  Home: {
+    screen: Stack,
+    navigationOptions: {
+      drawerLabel: 'Home',
+      drawerIcon: ({ tintColor }) => <MaterialIcons name='home' size={26} color={tintColor} />
+    }
+  },
+  HistoryView: {
+    screen: HistoryView,
+    navigationOptions: {
+      drawerLabel: 'History',
+      drawerIcon: ({ tintColor }) => <MaterialIcons name='history' size={26} color={tintColor} />
+    }
+  },
+});
+
 export default class App extends React.Component {
   componentDidMount(){
     setLocalNotification();
@@ -100,7 +118,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex:1}}>
           <MyStatusBar backgroundColor={purple} barStyle='light-content'/>
-          <MainNavigator />
+          <Drawer />
         </View>
       </Provider>
     );

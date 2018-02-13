@@ -19,10 +19,8 @@ class DecksListView extends Component {
       if (decks!==null) this.props.dispatch(receiveDecks(decks));
     })
     .then(() => 
-      setTimeout(() => 
-          this.setState(() => ({
-            ready: true
-          })),2000
+      this.setState(() => 
+        ({ ready: true })
       )
     );
   };
@@ -74,6 +72,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (decks) => ({decks});
+const mapStateToProps = ({ decks }) => ({decks});
 
 export default connect(mapStateToProps)(DecksListView);

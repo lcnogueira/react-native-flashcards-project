@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (decks, { navigation }) => ({
+const mapStateToProps = ({ decks }, { navigation }) => ({
   deck: decks[navigation.state.params.deckTitle],
   navigate: navigation.navigate,
 });

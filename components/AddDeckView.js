@@ -56,7 +56,6 @@ class AddDeckView extends Component {
     const { deckTitle, deckTitleError } = this.state;
 
     return (
-      //FIXME: To Avoid the keyboard to pop up over the buttons 
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <MyText>What is the title of your new Deck?</MyText>
         <MyInputText

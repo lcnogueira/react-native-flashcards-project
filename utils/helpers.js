@@ -15,6 +15,12 @@ const getPercentage = (value, total) => (value/total * 100).toFixed(2);
 export const showResult = (correctAnswers, questions) => 
   `You got ${correctAnswers} of ${questions} ${questions===1 ? 'question':'questions'}!\n(Efficiency: ${getPercentage(correctAnswers, questions)}%)`;
 
+export const timeToString = (time = Date.now()) => {
+    const date = new Date(time);
+    const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    return todayUTC.toISOString().split('T')[0];
+};
+
 const createNotification = () => ({
   title: 'Hey, you have to study!',
   body: "You didn't complete any quiz today!",
@@ -60,6 +66,6 @@ export const setLocalNotification = () => {
 };
 
 export const clearLocalNotification = () => {
-  AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notifications.cancelAllScheduledNotificationsAsync());
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync);
 };

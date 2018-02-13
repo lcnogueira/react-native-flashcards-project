@@ -1,31 +1,8 @@
-import { ADD_DECK, RECEIVE_DECKS, ADD_CARD } from '../utils/actionTypes';
+import { combineReducers } from 'redux';
+import decks from './decks';
+import history from './history';
 
-const decks = (state = {}, action) => {
-  switch (action.type){
-    case ADD_DECK:
-      return {
-        ...state,
-        ...action.deck
-      };
-    case RECEIVE_DECKS:
-      return {
-        ...state,
-        ...action.decks
-      }
-    case ADD_CARD:
-      return {
-        ...state,
-        [action.deckTitle]:{
-          title: action.deckTitle,
-          questions: [
-            ...state[action.deckTitle].questions,
-            action.card
-          ]
-        }
-      };
-    default:
-      return state;
-  }
-};
-
-export default decks;
+export default combineReducers({
+    decks,
+    history
+});

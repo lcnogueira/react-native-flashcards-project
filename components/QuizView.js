@@ -7,6 +7,8 @@ import MyText from './MyText';
 import MyButton from './MyButton';
 import { NavigationActions } from 'react-navigation';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
+import { addHistoryEntry } from '../actions';
+import { saveHistoryEntry } from '../utils/api';
 
 const TextButton = ({ children, onPress, addStyle }) => (
   <TouchableOpacity onPress={onPress}>
@@ -15,7 +17,6 @@ const TextButton = ({ children, onPress, addStyle }) => (
 );
 
 class QuizView extends Component {
-  //TODO: Add static propTypes to each component
   initialState = {
     showQuestion: true,
     cardIndex: 0,
@@ -47,12 +48,23 @@ class QuizView extends Component {
     
     //If it's true, then there's no card to show anymore
     if(cardIndex === deck.questions.length){
+
+      const historyEntry = {
+        deckTitle: deck.title,
+        correctAnswers,
+        questions: deck.questions.length,
+        date: (new Date()).toLocaleDateString(),
+      };
+
+      //Dispacth action to update the store
+      this.props.dispatch(addHistoryEntry(historyEntry));
+
+      //Save the entry in AsyncStorage history
+      saveHistoryEntry(historyEntry);
       
-      //It Clears today notification and sets tomorrow notification
+      //It clears today notification and sets tomorrow notification
       clearLocalNotification()
         .then(setLocalNotification);
-
-      //TODO: update AsyncStorage and update history state at store
 
       return (
         <View style={styles.container}>
@@ -140,7 +152,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (decks, { navigation }) => ({
+const mapStateToProps = ({ decks }, { navigation }) => ({
   deck: decks[navigation.state.params.deckTitle],
 });
 

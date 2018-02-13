@@ -62,7 +62,6 @@ class AddCardView extends Component {
     const { question, questionError, answer, answerError } = this.state;
 
     return (
-      //FIXME: To Avoid the keyboard to pop up over the buttons
       <KeyboardAvoidingView style={styles.container}>
         <MyInputText 
           onChangeText={this.handleQuestion}
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (decks, { navigation }) => ({
+const mapStateToProps = (state, { navigation }) => ({
   deckTitle: navigation.state.params.deckTitle,
   goBack: () => navigation.goBack(),
 })
