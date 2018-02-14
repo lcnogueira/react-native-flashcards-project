@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, KeyboardAvoidingView, StyleSheet, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
-import MyInputText from './MyInputText';
 import MyButton from './MyButton';
 import { black } from '../utils/colors';
 import { addCardToDeck } from '../utils/api';
 import { addCard } from '../actions';
+import { FormInput, FormValidationMessage } from 'react-native-elements';
 
 class AddCardView extends Component {
   state = {
@@ -63,23 +63,27 @@ class AddCardView extends Component {
 
     return (
       <KeyboardAvoidingView style={styles.container}>
-        <MyInputText 
+        <FormInput
           onChangeText={this.handleQuestion}
-          placeholder={'Type the question here...'}
-          showRequiredError={questionError}
-          addStyle={{margin: 40}}
-        >
-          {question}
-        </MyInputText>
-        <MyInputText 
+          value={question} 
+          placeholder='Enter the question here...'
+          inputStyle={{textAlign: 'center', fontSize: 18}}
+          containerStyle={{marginTop: 30}}
+        />
+        {questionError && (
+          <FormValidationMessage>{'This field is required'}</FormValidationMessage>
+        )}
+        <FormInput
           onChangeText={this.handleAnswer}
-          placeholder={'Type the answer here...'}
-          showRequiredError={answerError}
-          addStyle={{marginBottom: 30}}
-        >
-          {answer}
-        </MyInputText>
-        <MyButton onPress={this.submit} addStyle={{backgroundColor:black}}>
+          value={answer} 
+          placeholder='Enter the answer here...'
+          inputStyle={styles.input}
+          containerStyle={{marginTop: 30}}
+        />
+        {answerError && (
+          <FormValidationMessage>{'This field is required'}</FormValidationMessage>
+        )}
+        <MyButton onPress={this.submit} addStyle={{margin: 20, backgroundColor:black}}>
           Submit
         </MyButton>
       </KeyboardAvoidingView>
@@ -92,7 +96,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-  }
+  },
+  input: { 
+    textAlign: 'center', 
+    fontSize: 18,
+  },
 });
 
 const mapStateToProps = (state, { navigation }) => ({

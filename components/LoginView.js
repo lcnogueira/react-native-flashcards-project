@@ -22,7 +22,7 @@ export default class LoginView extends Component {
     password: '',
     error: '',
     loading: ''
-  }
+  };
 
   onSignUpPress = () => {
     this.setState({
@@ -64,6 +64,7 @@ export default class LoginView extends Component {
           error: '', 
           loading:false
         });
+        
         this.props.navigation.dispatch(resetAction);
       })
       .catch((e) => {
@@ -99,20 +100,20 @@ export default class LoginView extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <FormLabel labelStyle={styles.label}>Email</FormLabel>
+        <FormLabel labelStyle={styles.text}>Email</FormLabel>
         <FormInput
           value={this.state.email} 
           onChangeText={(email) => this.setState({email})}
           placeholder='john.doe@gmail.com'
-          inputStyle={styles.input}
+          inputStyle={styles.text}
         />
-        <FormLabel labelStyle={styles.label}>Password</FormLabel>
+        <FormLabel labelStyle={styles.text}>Password</FormLabel>
         <FormInput 
           value={this.state.password}
           onChangeText={(password) => this.setState({password})}
           secureTextEntry
           placeholder='Please enter your password...'
-          inputStyle={styles.input}
+          inputStyle={styles.text}
         />
         <Text>{this.state.error}</Text>
         {this.renderButtonOrLoading()}
@@ -128,12 +129,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
   },
-  label: {
+  text: {
     textAlign: 'center',
     fontSize: 18
   },
-  input: {
-    textAlign: 'center',
-    fontSize: 18
-  }
 });

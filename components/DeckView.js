@@ -22,7 +22,7 @@ class DeckView extends Component {
     return (
       <View style={styles.container}>
         <MyText>{deck.title}</MyText>
-        <Text style={{fontSize: 18, color: gray }}>{getCardsDesc(deck)}</Text>
+        <Text style={{fontSize: 14, color: gray }}>{getCardsDesc(deck)}</Text>
         <MyButton 
           onPress={() => navigate('AddCardView', { deckTitle: deck.title })} 
           addStyle={{marginBottom: 10, marginTop: 90, backgroundColor: blue}} 

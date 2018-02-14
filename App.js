@@ -10,7 +10,7 @@ import LoginView from './components/LoginView';
 import { StackNavigator } from 'react-navigation';
 import MainNavigator from './components/MainNavigator';
 
-const Full = StackNavigator({
+const MainStack = StackNavigator({
   LoginView: {
     screen: LoginView,
   },
@@ -32,7 +32,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex:1}}>
           <MyStatusBar backgroundColor={purple} barStyle='light-content'/>
-          <Full />
+          <MainStack />
         </View>
       </Provider>
     );

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native';
 import MyButton from './MyButton';
-import MyInputText from './MyInputText';
 import { saveDeckTitle } from '../utils/api';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
 import { black } from '../utils/colors';
 import MyText from './MyText';
+import { FormInput, FormValidationMessage } from 'react-native-elements';
 
 class AddDeckView extends Component {
   state = { 
@@ -58,17 +58,18 @@ class AddDeckView extends Component {
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <MyText>What is the title of your new Deck?</MyText>
-        <MyInputText
+        <FormInput
           onChangeText={this.handleDeckTitle}
-          placeholder='Deck Title'
-          showRequiredError={deckTitleError}
-          addStyle={{margin: 40}}
-        >
-          {deckTitle}
-        </MyInputText>
+          value={deckTitle} 
+          placeholder='Enter the deck title here...'
+          inputStyle={{textAlign: 'center', fontSize: 18}}
+        />
+        {deckTitleError && (
+          <FormValidationMessage>{'This field is required'}</FormValidationMessage>
+        )}
         <MyButton
           onPress={this.submit}
-          addStyle={{backgroundColor:black}} 
+          addStyle={{backgroundColor:black, marginTop: 30}} 
         >
           Create Deck
         </MyButton>

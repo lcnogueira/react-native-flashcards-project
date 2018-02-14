@@ -5,6 +5,7 @@ import MyText from './MyText';
 import { getHistory } from '../utils/api';
 import { receiveHistory } from '../actions';
 import { Table, Row, Rows } from 'react-native-table-component';
+import { blue } from '../utils/colors';
 
 class HistoryView extends Component {
 
@@ -50,10 +51,12 @@ class HistoryView extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={[styles.text, {fontSize: 22, marginBottom: 10}]}>History</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.mainTitle}>History</Text>          
+          </View>
           <Table borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
-            <Row data={tableHead} style={{height: 60, backgroundColor: '#f1f8ff'}} textStyle={styles.text}/>
-            <Rows data={tableData} style={{ height: 60 }} textStyle={styles.text} />
+            <Row data={tableHead} style={{height: 60}} textStyle={styles.tbHead}/>
+            <Rows data={tableData} style={{height: 60}} textStyle={styles.tbData} />
           </Table>
         </View>
       </ScrollView>
@@ -63,17 +66,35 @@ class HistoryView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    padding: 5,
-    margin: 5,
+    flex:1,
+  },
+  titleContainer: {
+    borderBottomWidth:1, 
+    backgroundColor: blue,
+    borderColor:'#c8c7cc',
+  },
+  mainTitle: {
+    color:'white',
+    marginTop:15,
+    marginBottom:15, 
+    marginLeft:15,
+    fontWeight:'bold',
+    fontSize:20,
   },
   center: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  text: {
+  tbHead: {
+    color:'#009688', 
+    marginBottom:10, 
+    fontWeight:'500',
+    textAlign: 'center'
+  },
+  tbData: {
+    color:'black', 
+    fontSize: 16,
     textAlign: 'center'
   },
 });
