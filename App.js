@@ -1,114 +1,28 @@
 import React from 'react';
-import { View, Platform } from 'react-native';
-import AddDeckView from './components/AddDeckView';
+import { View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import DecksListView from './components/DecksListView';
-import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
-import { blue, white, purple } from './utils/colors';
-import { MaterialIcons } from '@expo/vector-icons';
-import MyStatusBar from './components/MyStatusBar';
-import DeckView from './components/DeckView';
-import AddCardView from './components/AddCardView';
-import QuizView from './components/QuizView';
-import HistoryView from './components/HistoryView';
 import { setLocalNotification } from './utils/helpers';
+import { purple } from './utils/colors';
+import MyStatusBar from './components/MyStatusBar';
+import LoginView from './components/LoginView';
+import { StackNavigator } from 'react-navigation';
+import MainNavigator from './components/MainNavigator';
 
-const Tabs = TabNavigator({
-  DecksListView: {
-    screen: DecksListView,
-    navigationOptions: {
-      tabBarLabel: 'Decks',
-      tabBarIcon: ({ tintColor }) => <MaterialIcons name='list' size={26} color={tintColor} />
-    }
+const Full = StackNavigator({
+  LoginView: {
+    screen: LoginView,
   },
-  AddDeckView: {
-    screen: AddDeckView,
-    navigationOptions: {
-      tabBarLabel: 'New Deck',
-      tabBarIcon: ({ tintColor }) => <MaterialIcons name='add-circle-outline' size={26} color={tintColor} />
-    }
-  }
+  MainNavigator: {
+    screen: MainNavigator,
+  },
 },{
-    navigationOptions: {
-      header: null
-    },
-    tabBarOptions: {
-      showIcon: true,
-      upperCaseLabel: false,
-      // showLabel: false,
-      activeTintColor: Platform.OS === 'ios' ? blue : white,
-      style: {
-        height: 57,
-        backgroundColor: Platform.OS === 'ios' ? white : blue,
-        shadowColor: 'rgba(0, 0, 0, 0.24)',
-        shadowOffset: {
-          width: 0,
-          height: 3
-        },
-        shadowRadius: 6,
-        shadowOpacity: 1,
-      },
-      tabStyle: {
-        flexDirection:'row'
-      },
-    },
-});
-
-const Stack = StackNavigator({
-  Home: {
-    screen: Tabs,
-  },
-  DeckView: {
-    screen: DeckView,
-    navigationOptions: {
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: blue,
-      }
-    },
-  },
-  AddCardView: {
-    screen: AddCardView,
-    navigationOptions: {
-      title: 'Add Card',
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: blue,
-      }
-    },
-  },
-  QuizView: {
-    screen: QuizView,
-    navigationOptions: {
-      title: 'Quiz',
-      headerTintColor: white,
-      headerStyle: {
-        backgroundColor: blue,
-      }
-    },
-  },
-});
-
-const Drawer = DrawerNavigator({
-  Home: {
-    screen: Stack,
-    navigationOptions: {
-      drawerLabel: 'Home',
-      drawerIcon: ({ tintColor }) => <MaterialIcons name='home' size={26} color={tintColor} />
-    }
-  },
-  HistoryView: {
-    screen: HistoryView,
-    navigationOptions: {
-      drawerLabel: 'History',
-      drawerIcon: ({ tintColor }) => <MaterialIcons name='history' size={26} color={tintColor} />
-    }
-  },
+  headerMode: 'none'
 });
 
 export default class App extends React.Component {
+
   componentDidMount(){
     setLocalNotification();
   };
@@ -118,7 +32,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex:1}}>
           <MyStatusBar backgroundColor={purple} barStyle='light-content'/>
-          <Drawer />
+          <Full />
         </View>
       </Provider>
     );
