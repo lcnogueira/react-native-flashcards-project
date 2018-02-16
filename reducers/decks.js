@@ -1,4 +1,9 @@
-import { ADD_DECK, RECEIVE_DECKS, ADD_CARD } from '../utils/actionTypes';
+import { 
+  ADD_DECK, 
+  RECEIVE_DECKS,
+  DELETE_ALL_DECKS,
+  ADD_CARD 
+} from '../utils/actionTypes';
 
 const decks = (state = {}, action) => {
   switch (action.type){
@@ -11,7 +16,7 @@ const decks = (state = {}, action) => {
       return {
         ...state,
         ...action.decks
-      }
+      };
     case ADD_CARD:
       return {
         ...state,
@@ -23,6 +28,8 @@ const decks = (state = {}, action) => {
           ]
         }
       };
+    case DELETE_ALL_DECKS: 
+      return {};
     default:
       return state;
   }

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { blue, white } from '../utils/colors';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import AddDeckView from './AddDeckView';
 import DecksListView from './DecksListView';
 import DeckView from './DeckView';
 import AddCardView from './AddCardView';
 import QuizView from './QuizView';
 import HistoryView from './HistoryView';
+import SettingsView from './SettingsView';
 
 const Tabs = TabNavigator({
   DecksListView: {
@@ -101,9 +102,17 @@ const Drawer = DrawerNavigator({
       drawerIcon: ({ tintColor }) => <MaterialIcons name='history' size={26} color={tintColor} />
     }
   },
+  SettingsView: {
+    screen: SettingsView,
+    navigationOptions: {
+      drawerLabel: 'Settings',
+      drawerIcon: ({ tintColor }) => <MaterialCommunityIcons name='settings' size={26} color={tintColor} />
+    }
+  }
 });
 
 export default class MainNavigator extends Component {
+
   render(){
     return (
       <Drawer />

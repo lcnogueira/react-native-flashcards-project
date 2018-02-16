@@ -1,4 +1,8 @@
-import { ADD_HISTORY_ENTRY, RECEIVE_HISTORY } from '../utils/actionTypes';
+import { 
+  ADD_HISTORY_ENTRY, 
+  RECEIVE_HISTORY,
+  DELETE_HISTORY
+} from '../utils/actionTypes';
 
 const history = (state = [], action) => {
   switch (action.type){
@@ -6,6 +10,8 @@ const history = (state = [], action) => {
       return [...state, action.entry];
     case RECEIVE_HISTORY:
       return [...action.entries];
+    case DELETE_HISTORY:
+      return [];
     default:
       return state;
   }

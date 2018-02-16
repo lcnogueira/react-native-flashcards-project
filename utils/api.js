@@ -32,6 +32,10 @@ export const addCardToDeck = (deckTitle, card) => {
   });
 };
 
+export const removeAllDecks = () => {
+  return AsyncStorage.removeItem(FLASHCARDS_STORAGE_KEY);
+};
+
 export const saveHistoryEntry = (entry) => {
   return AsyncStorage.getItem(FLASHCARDS_HISTORY_KEY)
     .then(entries => {
@@ -44,4 +48,8 @@ export const saveHistoryEntry = (entry) => {
 export const getHistory = () => {
   return AsyncStorage.getItem(FLASHCARDS_HISTORY_KEY)
     .then(entries => JSON.parse(entries));
+};
+
+export const removeHistory = () => {
+  return AsyncStorage.removeItem(FLASHCARDS_HISTORY_KEY);
 };
