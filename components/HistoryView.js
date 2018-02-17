@@ -36,28 +36,27 @@ class HistoryView extends Component {
       );      
     }
 
-    if(history.length === 0){
-      return (
-        <View style={styles.center}>
-          <MyText>There are no entries in the history!</MyText>
-        </View>
-      )
-    }
-
     const tableHead = ['Deck', 'Correct Answers', 'Questions', 'Date'];
     //Turns objects vector into vectors vector
     const tableData = history.map(entry => Object.values(entry));
 
     return (
       <ScrollView>
-        <View style={styles.container}>
+        <View style={{flex:1}}>
           <View style={styles.titleContainer}>
             <Text style={styles.mainTitle}>History</Text>          
           </View>
-          <Table borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
-            <Row data={tableHead} style={{height: 60}} textStyle={styles.tbHead}/>
-            <Rows data={tableData} style={{height: 60}} textStyle={styles.tbData} />
-          </Table>
+          {history.length > 0 
+          ? (
+            <Table borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
+              <Row data={tableHead} style={{height: 60}} textStyle={styles.tbHead}/>
+              <Rows data={tableData} style={{height: 60}} textStyle={styles.tbData} />
+            </Table>
+          ) : (
+            <View style={{marginTop: 40}}>
+              <MyText>There are no entries in the history!</MyText>
+            </View>
+          )}
         </View>
       </ScrollView>
     );
@@ -65,9 +64,6 @@ class HistoryView extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-  },
   titleContainer: {
     borderBottomWidth:1, 
     backgroundColor: blue,
