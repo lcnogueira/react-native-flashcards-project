@@ -1,5 +1,16 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "sdkVersion": "25.0.0",
+    "name": "Flashcards",
+    "description": "An app that helps you study through cards with answers and questions",
+    "slug": "flashcards",
+    "version": "1.0.0",
+    "icon": "./utils/images/decks_of_cards.png",
+    "ios": {
+      "bundleIdentifier": "com.mycompany.flashcards"
+    },
+    "android": {
+      "package": "com.mycompany.flashcards"
+    }
   }
 }
