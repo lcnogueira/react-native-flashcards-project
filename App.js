@@ -15,8 +15,10 @@ const MainStack = StackNavigator({
     screen: LoginView,
   },
   MainNavigator: {
-    screen: MainNavigator,
-  },
+    screen: ({ navigation }) => (
+      <MainNavigator screenProps={{ topNavigation: navigation }} />
+    )
+  }
 },{
   headerMode: 'none'
 });

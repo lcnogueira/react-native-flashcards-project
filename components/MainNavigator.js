@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { blue, white } from '../utils/colors';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -108,14 +108,16 @@ const Drawer = DrawerNavigator({
       drawerLabel: 'Settings',
       drawerIcon: ({ tintColor }) => <MaterialCommunityIcons name='settings' size={26} color={tintColor} />
     }
+  },
+  Logout: {
+    screen: ({ screenProps }) => (
+          <TouchableOpacity onLayout={() => screenProps.topNavigation.navigate('LoginView')} />
+    ),
+    navigationOptions: {
+      drawerLabel: 'Logout',
+      drawerIcon: ({ tintColor }) => <MaterialCommunityIcons name='logout' size={26} color={tintColor} />
+    }
   }
 });
 
-export default class MainNavigator extends Component {
-
-  render(){
-    return (
-      <Drawer />
-    )
-  }
-}
+export default Drawer;
