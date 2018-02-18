@@ -108,20 +108,22 @@ class QuizView extends Component {
                 </TextButton>
               </View>
             )}
-            <MyButton 
-              onPress={this.correctAnswer} 
-              addStyle={{marginBottom: 10, marginTop: 90, backgroundColor: green}}
-              disabled={showQuestion}
-            >
-              Correct
-            </MyButton>
-            <MyButton
-              onPress={this.showNewCard}
-              addStyle={{backgroundColor: red}}
-              disabled={showQuestion}
-            >
-              Incorrect
-            </MyButton>
+            <View style={showQuestion? {opacity: 0.5} : {}}>
+              <MyButton 
+                onPress={this.correctAnswer} 
+                addStyle={{marginBottom: 10, marginTop: 90, backgroundColor: green}}
+                disabled={showQuestion}
+              >
+                Correct
+              </MyButton>
+              <MyButton
+                onPress={this.showNewCard}
+                addStyle={{backgroundColor: red}}
+                disabled={showQuestion}
+              >
+                Incorrect
+              </MyButton>
+            </View>
           </View>
         )}
       </View>
