@@ -25,9 +25,9 @@ yarn start
 You can use the Expo app on your phone or install a simulator on your computer to see this app running.
 
 ## APK File
-If you don't want to follow the previous section steps, I've built an `.apk` file and you can download it from [here](https://exp-shell-app-assets.s3-us-west-1.amazonaws.com/android%2F%40luizcns%2Fflashcards-dbbdd249-1381-11e8-8833-0a580a782414-signed.apk). 
+If you don't want to follow the previous section steps, I've built an `.apk` file and you can download it from [here](https://exp-shell-app-assets.s3-us-west-1.amazonaws.com/android%2F%40luizcns%2Fflashcards-96ca8289-1577-11e8-b92e-0a580a78340d-signed.apk). 
 ```
-https://exp-shell-app-assets.s3-us-west-1.amazonaws.com/android%2F%40luizcns%2Fflashcards-dbbdd249-1381-11e8-8833-0a580a782414-signed.apk
+https://exp-shell-app-assets.s3-us-west-1.amazonaws.com/android%2F%40luizcns%2Fflashcards-96ca8289-1577-11e8-b92e-0a580a78340d-signed.apk
 ```
 To run it on your Android device, make sure you have the Android platform tools installed along with adb, then just run adb install app-filename.apk with [USB debugging enabled](https://developer.android.com/studio/run/device.html#device-developer-options) on your device and the device plugged in.
 
